@@ -1,4 +1,5 @@
 <?php
+include('inc/top-cache.php');
 
 // Load the Google API PHP Client Library.
 require_once __DIR__ . '/vendor/autoload.php';
@@ -15,7 +16,7 @@ function initializeAnalytics()
 	// Use the developers console and download your service account
 	// credentials in JSON format. Place them in this directory or
 	// change the key file location if necessary.
-	$KEY_FILE_LOCATION = __DIR__ . '/includes/service-account-credentials.json';
+	$KEY_FILE_LOCATION = __DIR__ . '/credentials/service-account-credentials.json';
 
 	// Create and configure a new client object.
 	$client = new Google_Client();
@@ -103,6 +104,12 @@ function printResults($results) {
 			unset( $rows[$key][1] );
 		}
 
-		print json_encode($rows);
+		$output = array();
+		$output["fetch_date"] = date('c');
+		$output["results"] = $rows;
+
+		print json_encode($output);
 	}
 }
+
+include('inc/bottom-cache.php');

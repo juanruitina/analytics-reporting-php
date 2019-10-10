@@ -1,3 +1,5 @@
 vendor
 composer.phar
-includes/service-account-credentials.json
+credentials/*
+!credentials/.htaccess
+cache
