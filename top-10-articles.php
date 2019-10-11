@@ -1,4 +1,5 @@
 <?php
+$cachetime = 21600; // 6 hours
 include('inc/top-cache.php');
 
 // Load the Google API PHP Client Library.
